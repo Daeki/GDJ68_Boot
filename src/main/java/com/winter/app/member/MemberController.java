@@ -63,12 +63,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("logout")
-	public String getLogout(HttpSession session) throws Exception {
-		session.invalidate();
-		
-		return "redirect:../";
-	}
+
 	
 	@GetMapping("login")
 	public String getLogin(@ModelAttribute MemberVO memberVO)throws Exception{

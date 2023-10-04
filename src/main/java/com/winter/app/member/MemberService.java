@@ -39,6 +39,10 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
+		log.info("*******************************");
+		log.info("{}", userRequest.getAccessToken());
+		log.info("*******************************");
+		
 		log.info("====== Social Login 처리 진행 ===========");
 		 ClientRegistration clientRegistration = userRequest.getClientRegistration();
 		log.info("===== {} =====", clientRegistration);
@@ -49,13 +53,13 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 		
 		String social = clientRegistration.getRegistrationId();
 		if(social.equals("kakao")) {
-			auth2User = this.forKakao(auth2User);
+			auth2User = this.forKakao(auth2User, userRequest);
 		}
 		
 		return auth2User;
 	}
 	
-	private OAuth2User forKakao(OAuth2User auth2User){
+	private OAuth2User forKakao(OAuth2User auth2User, OAuth2UserRequest userRequest){
 		MemberVO memberVO = new MemberVO();
 		log.info("df");
 		LinkedHashMap<String, String> map =auth2User.getAttribute("properties");
@@ -86,8 +90,8 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 		sb.append(d);
 //		sb.append(y).append("-")
 		
-		
-		
+		//사용자가 DB에 있는지 확인
+		memberVO.setAccessToken(userRequest.getAccessToken().getTokenValue());
 		memberVO.setUsername(map.get("nickname"));
 		memberVO.setName(map.get("nickname"));
 		memberVO.setEmail(kakaoAccount.get("email").toString());
@@ -95,6 +99,7 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 		
 		memberVO.setAttributes(auth2User.getAttributes());
 		
+		//사용자권한을 DB에서 조회
 		List<RoleVO> list = new ArrayList<>();
 		RoleVO roleVO = new RoleVO();
 		roleVO.setRoleName("ROLE_MEMBER");

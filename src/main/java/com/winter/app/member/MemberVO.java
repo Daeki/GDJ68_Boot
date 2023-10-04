@@ -39,6 +39,8 @@ public class MemberVO extends MemberInfoVO implements UserDetails, OAuth2User {
 	
 	private Map<String,Object> attributes;
 	
+	private String accessToken;
+	
 	
 	//Oaut2User
 	@Override
