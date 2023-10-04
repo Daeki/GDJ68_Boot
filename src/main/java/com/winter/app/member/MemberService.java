@@ -93,7 +93,9 @@ public class MemberService extends DefaultOAuth2UserService implements UserDetai
 		//사용자가 DB에 있는지 확인
 		memberVO.setAccessToken(userRequest.getAccessToken().getTokenValue());
 		memberVO.setUsername(map.get("nickname"));
-		memberVO.setName(map.get("nickname"));
+		//memberVO.setName(map.get("nickname"));
+		//회원ID를 Name에 대입
+		memberVO.setName(auth2User.getName());
 		memberVO.setEmail(kakaoAccount.get("email").toString());
 		memberVO.setBirth(Date.valueOf(sb.toString()));
 		
