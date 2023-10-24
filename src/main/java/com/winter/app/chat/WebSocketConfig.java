@@ -18,7 +18,9 @@ public class WebSocketConfig implements WebSocketConfigurer {
 		// TODO Auto-generated method stub
 		registry.addHandler(chatMessageHandler, "/chat")
 				.addInterceptors(new HttpSessionHandshakeInterceptor())
-				.setAllowedOrigins("*")
+				.setAllowedOrigins("http://localhost:82/chat")
+				.withSockJS()
+				.setClientLibraryUrl("http://localhost:82/js/chat/chat.js")
 				;
 	}
 	
