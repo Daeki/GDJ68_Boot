@@ -22,7 +22,7 @@
     	 		
     	 		
     	 		<div class="container-fluid">
-    	 			<div id="messages"></div>
+    	 			<div id="messages" data-chat-num="${roomnum}"></div>
     	 		
     	 			<div class="input-group mb-3">
 					  <input type="text" id="inputmsg" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">

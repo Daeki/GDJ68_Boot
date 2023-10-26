@@ -6,7 +6,7 @@
   <mapper namespace="com.winter.app.member.MemberDAO">
   	<insert id="setJoin" parameterType="MemberVO">
   		INSERT INTO MEMBER
-  		VALUES(#{username}, #{password}, #{name}, #{email}, #{birth}, now())
+  		VALUES(#{username}, #{password}, #{name}, #{email}, #{birth}, now(), 1)
   	</insert>
   	
   	<insert id="setMemberRole" parameterType="java.util.Map">

@@ -11,6 +11,8 @@
 		<typeAlias type="com.winter.app.board.notice.NoticeFileVO" alias="NoticeFileVO"/>
 		<typeAlias type="com.winter.app.member.MemberVO" alias="MemberVO"/>
 		<typeAlias type="com.winter.app.member.RoleVO" alias="RoleVO"/>
+		
+		<typeAlias type="com.winter.app.chat.ChatMemberVO" alias="ChatMemberVO"/>
 
 		<typeAlias type="com.winter.app.commons.Pager" alias="Pager"/>
 		

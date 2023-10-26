@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.winter.app.chat.ChatDAO">
+  	<insert id="createRoom" parameterType="ChatMemberVO" useGeneratedKeys="true" keyProperty="roomNo">
+  		INSERT INTO CHATROOM VALUES (#{roomNo}, #{user1}, #{user2})
+  	</insert>
+  	
+  	<select id="getRoom" parameterType="ChatMemberVO" resultType="ChatMemberVO">
+  		SELECT * FROM CHATROOM 
+  		WHERE 
+  			USER1=#{user1} and USER2=#{user2}
+  			OR
+  			USER1=#{user2} and USER2=#{user1}
+  	</select>
+  	
+  	
+  </mapper>
